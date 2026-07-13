@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0A332D">
+<title>叶家新加坡之旅 · The Ye Family Singapore Voyage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8ED;
+    --paper:#FFFDF8;
+    --ink:#2B4A3E;
+    --ink-soft:#5C7A6C;
+    --teal:#1E9E8B;
+    --teal-deep:#0F6B5C;
+    --gold:#FFB833;
+    --coral:#FF7A5C;
+    --mist:#DFF3EC;
+    --line:rgba(43,74,62,0.16);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito','Noto Sans SC',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+  button{-webkit-appearance:none;appearance:none;}
+  h1,h2,h3,.display{
+    font-family:'Fredoka','ZCOOL KuaiLe','Noto Sans SC',sans-serif;
+    font-weight:600;
+    letter-spacing:0;
+    margin:0;
+  }
+  .mono{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- LANG TOGGLE ---------- */
+  .lang-toggle{
+    position:fixed;
+    top:calc(14px + env(safe-area-inset-top));
+    right:calc(14px + env(safe-area-inset-right));
+    z-index:100;
+    display:flex;
+    background:rgba(11,51,45,0.85);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:100px;
+    padding:3px;
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+  }
+  .lang-btn{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding:8px 14px;
+    min-height:34px;
+    border-radius:100px;
+    border:none;
+    background:none;
+    color:#B9D2CA;
+    cursor:pointer;
+    transition:background 0.2s ease, color 0.2s ease;
+    touch-action:manipulation;
+  }
+  .lang-btn.active{
+    background:var(--gold);
+    color:var(--teal-deep);
+    font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(120% 140% at 50% -10%, #1BAE98 0%, var(--teal-deep) 55%, #081F1B 100%);
+    color:var(--paper);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"✦";
+    position:absolute; top:14%; left:8%;
+    font-size:22px; color:var(--gold); opacity:0.55;
+    transform:rotate(-12deg);
+  }
+  .hero::after{
+    content:"✦";
+    position:absolute; top:62%; right:6%;
+    font-size:16px; color:var(--coral); opacity:0.5;
+    transform:rotate(20deg);
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .eyebrow{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;background:var(--gold);
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.08;
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+  }
+  [lang-zh] .hero h1 em{font-style:normal;}
+  .hero-sub{
+    margin-top:18px;
+    max-width:46ch;
+    font-size:16.5px;
+    line-height:1.6;
+    color:#CFE3DD;
+  }
+  .flightmap{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .flightmap svg{width:100%;height:auto;display:block;}
+  .route-caption{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:12px;
+    color:#9DBDB3;
+    margin-top:6px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .route-caption span b{color:var(--paper);font-weight:600;}
+
+  .party-row{
+    margin-top:36px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    border-radius:100px;
+    padding:7px 14px 7px 7px;
+    font-size:13.5px;
+  }
+  .chip .dot{
+    width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:11px;font-weight:600;
+    color:var(--teal-deep);
+  }
+  .dot.gold{background:var(--gold);}
+  .dot.coral{background:var(--coral);color:var(--paper);}
+
+  /* ---------- PHASE TRACKER ---------- */
+  .phase-band{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(6px);
+  }
+  .phase-track{
+    display:flex;
+    align-items:center;
+    gap:0;
+  }
+  .phase-node{
+    flex:1;
+    text-align:center;
+    position:relative;
+    padding-top:22px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    font-family:'Nunito','Noto Sans SC',sans-serif;
+  }
+  .phase-node::before{
+    content:"";
+    position:absolute;
+    top:6px;left:50%;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--paper);
+    border:2.5px solid var(--teal);
+    transform:translateX(-50%);
+    z-index:2;
+  }
+  .phase-node::after{
+    content:"";
+    position:absolute;
+    top:11px;left:-50%;
+    width:100%;height:2px;
+    background:var(--line);
+    z-index:1;
+  }
+  .phase-node:first-child::after{display:none;}
+  .phase-label{
+    font-size:10.5px;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+  .phase-title{
+    font-family:'Fredoka','ZCOOL KuaiLe','Noto Sans SC',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin-top:3px;
+    color:var(--ink);
+  }
+  .phase-dates{
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0;}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:28px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:16px;
+  }
+  .section-num{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    color:var(--coral);
+    font-size:24px;
+  }
+  .section-head h2{font-size:26px;}
+
+  /* ---------- DAY CARDS ---------- */
+  .day-card{
+    background:var(--paper);
+    border:2.5px dashed var(--teal);
+    border-radius:var(--radius);
+    margin-bottom:18px;
+    overflow:hidden;
+    position:relative;
+    transform:rotate(-0.4deg);
+  }
+  .day-card:nth-child(even){transform:rotate(0.4deg);}
+  .day-summary{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:18px 20px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .day-date{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    text-align:center;
+    min-width:56px;
+    line-height:1.15;
+  }
+  .day-date .num{font-size:22px;font-weight:600;color:var(--teal);}
+  .day-date .mo{font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;}
+  .day-date .dow{font-size:10px;color:var(--coral);letter-spacing:0.04em;margin-top:1px;}
+  .weather-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:4px;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-left:8px;
+  }
+  .day-main{flex:1;min-width:0;}
+  .day-tag{
+    display:inline-block;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:10px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:2px 8px;
+    border-radius:100px;
+    margin-bottom:6px;
+  }
+  .tag-andaz{background:#FFE4A3;color:#9C6B00;}
+  .tag-cruise{background:#C7EDE4;color:var(--teal-deep);}
+  .tag-hyatt{background:#FFD4C7;color:#B8471F;}
+  .day-title{font-family:'Fredoka','ZCOOL KuaiLe','Noto Sans SC',sans-serif;font-weight:600;font-size:17px;}
+  .day-highlight{font-size:13px;color:var(--ink-soft);margin-top:2px;}
+  .day-toggle{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:18px;
+    color:var(--ink-soft);
+    transition:transform 0.25s ease;
+    flex-shrink:0;
+  }
+  .day-card.open .day-toggle{transform:rotate(45deg);}
+  .day-detail{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.35s ease;
+    border-top:1px dashed var(--line);
+  }
+  .day-card.open .day-detail{max-height:900px;}
+  .schedule{
+    padding:6px 20px 20px;
+    display:grid;
+    gap:0;
+  }
+  .slot{
+    display:grid;
+    grid-template-columns:96px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .slot:last-child{border-bottom:none;}
+  .slot-label{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--coral);
+    padding-top:2px;
+  }
+  .slot-text{font-size:14.5px;line-height:1.55;color:var(--ink);}
+  .slot-text b{font-weight:600;}
+  .day-map{
+    margin:4px 20px 18px;
+    border-radius:14px;
+    overflow:hidden;
+    border:2px dashed var(--gold);
+    background:repeating-linear-gradient(135deg, var(--paper) 0px, var(--paper) 10px, #FFF3DC 10px, #FFF3DC 20px);
+  }
+  .doodle-map-svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .day-map-links{
+    display:flex;
+  }
+  .day-map-link{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:11.5px;
+    color:var(--teal);
+    background:var(--mist);
+    padding:9px 10px;
+    text-decoration:none;
+    border-top:2px dashed var(--gold);
+    text-align:center;
+  }
+  .day-map-link + .day-map-link{
+    border-left:2px dashed var(--gold);
+  }
+  .day-map-link:active{opacity:0.7;}
+
+  .note-banner{
+    margin:0 20px 18px;
+    background:var(--mist);
+    border:2px dashed var(--teal);
+    border-radius:14px;
+    padding:10px 14px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- GUIDE TABS (Food / Attractions) ---------- */
+  .guide-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+  }
+  .guide-tab-btn{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    padding:9px 18px;
+    min-height:40px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink-soft);
+    cursor:pointer;
+    touch-action:manipulation;
+    transition:background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .guide-tab-btn.active{
+    background:var(--teal);
+    border-color:var(--teal);
+    color:var(--paper);
+  }
+  .guide-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+  .guide-card{
+    background:var(--paper);
+    border:2.5px dashed var(--coral);
+    border-radius:var(--radius);
+    padding:16px 18px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    transform:rotate(-0.4deg);
+  }
+  .guide-card:nth-child(even){transform:rotate(0.4deg);}
+  .guide-card .g-day{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:11px;
+    color:var(--coral);
+    background:var(--mist);
+    border-radius:100px;
+    padding:3px 9px;
+    flex-shrink:0;
+    white-space:nowrap;
+    margin-top:2px;
+  }
+  .guide-card .g-body h4{
+    font-family:'Fredoka','ZCOOL KuaiLe','Noto Sans SC',sans-serif;
+    font-weight:600;
+    font-size:15px;
+    margin:0 0 3px;
+  }
+  .guide-card .g-body p{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    margin:0;
+  }
+
+  /* ---------- INFO CARDS ---------- */
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+  .info-card{
+    background:var(--paper);
+    border:2.5px dashed var(--teal);
+    border-radius:var(--radius);
+    padding:20px;
+    transform:rotate(-0.5deg);
+  }
+  .info-card:nth-child(even){transform:rotate(0.5deg);}
+  .info-card .k{
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:var(--coral);
+    margin-bottom:8px;
+  }
+  .info-card h3{font-size:18px;margin-bottom:8px;}
+  .info-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.55;margin:4px 0;}
+
+  /* ---------- CHECKLIST ---------- */
+  .checklist{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0 32px;
+    background:var(--paper);
+    border:2.5px dashed var(--gold);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .check-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:9px 0;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .check-item input{
+    width:17px;height:17px;
+    accent-color:var(--teal);
+    flex-shrink:0;
+  }
+  .check-item.checked span{
+    text-decoration:line-through;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- TIPS ---------- */
+  .tips-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .tip{
+    background:var(--teal);
+    color:var(--paper);
+    border-radius:var(--radius);
+    padding:20px;
+  }
+  .tip .k{font-family:'Fredoka','Noto Sans SC',sans-serif;font-size:10.5px;text-transform:uppercase;color:var(--gold);letter-spacing:0.07em;margin-bottom:8px;}
+  .tip p{font-size:13.5px;line-height:1.6;color:#D8E9E3;margin:0;}
+
+  footer{
+    padding:36px 0 60px;
+    text-align:center;
+    font-family:'Fredoka','Noto Sans SC',sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+  }
+
+  footer{padding-bottom:calc(36px + env(safe-area-inset-bottom));}
+
+  @media (max-width:720px){
+    .wrap{padding:0 18px;}
+    .hero{padding:calc(56px + env(safe-area-inset-top)) 0 44px;}
+    .info-grid{grid-template-columns:1fr;}
+    .guide-grid{grid-template-columns:1fr;}
+    .checklist{grid-template-columns:1fr;}
+    .tips-grid{grid-template-columns:1fr;}
+    .phase-label,.phase-dates{display:none;}
+    .phase-band{padding:16px 0;}
+    .slot{grid-template-columns:66px 1fr;gap:10px;}
+    section{padding:40px 0;}
+    .day-summary{padding:16px 14px;gap:12px;min-height:44px;}
+    .day-toggle{font-size:22px;}
+    .check-item{padding:12px 0;min-height:44px;}
+    .check-item input{width:20px;height:20px;}
+    .info-card,.checklist{padding:18px;}
+  }
+
+  @media (max-width:400px){
+    .hero h1{font-size:30px;max-width:11ch;}
+    .hero-sub{font-size:15px;}
+    .eyebrow{font-size:11px;}
+    .flightmap text{font-size:9.5px;}
+    .chip{font-size:12.5px;padding:6px 12px 6px 6px;}
+    .day-title{font-size:15.5px;}
+    .lang-btn{padding:7px 11px;font-size:12px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .day-detail,.day-toggle{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+  <button class="lang-btn active" id="btnZh" onclick="setLang('zh')">中文</button>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="eyebrow"></div>
+    <h1 data-i18n-html="h1"></h1>
+    <p class="hero-sub" data-i18n="heroSub"></p>
+
+    <div class="flightmap">
+      <svg viewBox="0 0 800 220" preserveAspectRatio="xMidYMid meet">
+        <path d="M 90 40 C 300 40, 480 160, 690 178" fill="none" stroke="rgba(227,169,59,0.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <path d="M 90 190 C 300 190, 480 120, 690 178" fill="none" stroke="rgba(214,95,76,0.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+
+        <circle cx="90" cy="40" r="5" fill="#E3A93B"/>
+        <text x="105" y="35" fill="#CFE3DD" font-family="Fredoka, sans-serif" font-size="12" data-i18n="harbinLabel"></text>
+        <text x="105" y="50" fill="#7FA599" font-family="Fredoka, sans-serif" font-size="10.5" data-i18n="harbinTime"></text>
+
+        <circle cx="90" cy="190" r="5" fill="#D65F4C"/>
+        <text x="105" y="185" fill="#CFE3DD" font-family="Fredoka, sans-serif" font-size="12" data-i18n="shanghaiLabel"></text>
+        <text x="105" y="200" fill="#7FA599" font-family="Fredoka, sans-serif" font-size="10.5" data-i18n="shanghaiTime"></text>
+
+        <circle cx="690" cy="178" r="7" fill="#F6F1E4"/>
+        <circle cx="690" cy="178" r="12" fill="none" stroke="#F6F1E4" stroke-width="1">
+          <animate attributeName="r" values="10;22;10" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0;0.7" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <text x="670" y="205" fill="#FFF8ED" font-family="Fredoka, sans-serif" font-weight="600" font-size="14" text-anchor="middle">SIN</text>
+
+        <g fill="#E3A93B">
+          <path d="M0,-3 L6,0 L0,3 L1,0 Z" transform="translate(90,40)">
+            <animateMotion dur="4.5s" repeatCount="indefinite" path="M 0 0 C 210 0, 390 120, 600 138"/>
+          </path>
+        </g>
+        <g fill="#D65F4C">
+          <path d="M0,-3 L6,0 L0,3 L1,0 Z" transform="translate(90,190)">
+            <animateMotion dur="4.5s" repeatCount="indefinite" path="M 0 0 C 210 0, 390 -70, 600 -12"/>
+          </path>
+        </g>
+      </svg>
+      <div class="route-caption">
+        <span data-i18n="routeCaption1"></span>
+        <span data-i18n-html="routeCaption2"></span>
+      </div>
+    </div>
+
+    <div class="party-row" id="partyRow"></div>
+  </div>
+</div>
+
+<!-- ================= PHASE TRACKER ================= -->
+<div class="phase-band">
+  <div class="wrap">
+    <div class="phase-track">
+      <button class="phase-node" onclick="scrollToPhase('andaz')">
+        <div class="phase-label" data-i18n="stayLabel"></div>
+        <div class="phase-title">Andaz</div>
+        <div class="phase-dates" data-i18n="andazDates"></div>
+      </button>
+      <button class="phase-node" onclick="scrollToPhase('cruise')">
+        <div class="phase-label" data-i18n="sailLabel"></div>
+        <div class="phase-title" data-i18n="cruiseTitle"></div>
+        <div class="phase-dates" data-i18n="cruiseDates"></div>
+      </button>
+      <button class="phase-node" onclick="scrollToPhase('hyatt')">
+        <div class="phase-label" data-i18n="stayLabel"></div>
+        <div class="phase-title">Grand Hyatt</div>
+        <div class="phase-dates" data-i18n="hyattDates"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ITINERARY ================= -->
+<section id="itinerary">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">🗺️</span>
+      <h2 data-i18n="itineraryTitle"></h2>
+    </div>
+    <div id="dayList"></div>
+  </div>
+</section>
+
+<!-- ================= FOOD / ATTRACTIONS GUIDE ================= -->
+<section id="guide" style="background:var(--mist);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">🍜</span>
+      <h2 data-i18n="guideTitle"></h2>
+    </div>
+    <div class="guide-tabs" id="guideTabs"></div>
+    <div class="guide-grid" id="guideGrid"></div>
+  </div>
+</section>
+
+<!-- ================= STAYS & CRUISE ================= -->
+<section id="stays">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">🏨</span>
+      <h2 data-i18n="staysTitle"></h2>
+    </div>
+    <div class="info-grid" id="infoGrid"></div>
+  </div>
+</section>
+
+<!-- ================= CHECKLIST ================= -->
+<section id="packing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">🎒</span>
+      <h2 data-i18n="packingTitle"></h2>
+    </div>
+    <div class="checklist" id="checklist"></div>
+  </div>
+</section>
+
+<!-- ================= TIPS ================= -->
+<section id="tips" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">☀️</span>
+      <h2 data-i18n="tipsTitle"></h2>
+    </div>
+    <div class="tips-grid" id="tipsGrid"></div>
+  </div>
+</section>
+
+<footer data-i18n="footer"></footer>
+
+<script>
+/* ===================== MAP DATA (shared across languages, order matches days[]) ===================== */
+/* ===================== WEEKDAY + WEATHER (shared across languages, order matches days[]) ===================== */
+const weekdaysEN = ["FRI","SAT","SUN","MON","TUE","WED","THU","FRI","SAT","SUN","MON"];
+const weekdaysZH = ["周五","周六","周日","周一","周二","周三","周四","周五","周六","周日","周一"];
+// No precise forecast exists this far out — this reflects Singapore's typical early-August climate
+// and NEA's 2026 Southwest Monsoon outlook (below-average rainfall, above-average temps for Jun-Aug 2026).
+const weatherEN = "31–33°C · chance of brief afternoon showers";
+const weatherZH = "31–33°C · 午后可能有短暂阵雨";
+
+const dayStops = [
+  { center:"Singapore Changi Airport", stops:["Singapore Changi Airport, Singapore","Andaz Singapore, Singapore"] }, // Jul 31
+  { center:"Gardens by the Bay, Singapore", stops:["Gardens by the Bay, Singapore","Satay by the Bay, Singapore","Merlion Park, Singapore","Marina Bay Sands, Singapore"] }, // Aug 1
+  { center:"Singapore Zoo", stops:["River Wonders, Singapore","Singapore Zoo, Singapore","Night Safari, Singapore"] }, // Aug 2
+  null, // Aug 3, boarding day — no map needed
+  null, // Aug 4, at sea day 2
+  null, // Aug 5, at sea day 3
+  { center:"Marina One, Singapore", stops:["Marina Bay Cruise Centre Singapore","Marina One, Singapore","Fort Canning Park, Singapore","Grand Hyatt Singapore"] }, // Aug 6
+  { center:"Sentosa Island, Singapore", stops:["VivoCity, Singapore","Skyline Luge Sentosa, Singapore","Palawan Beach, Sentosa, Singapore","Trapizza Sentosa, Singapore"] }, // Aug 7
+  { center:"Marina South Pier, Singapore", stops:["Marina South Pier, Singapore","Sisters' Islands, Singapore","Lazarus Island, Singapore","Kusu Island, Singapore"] }, // Aug 8
+  { center:"Kampong Glam, Singapore", stops:["Sultan Mosque Singapore","Haji Lane, Singapore","National Gallery Singapore","Clarke Quay, Singapore"] }, // Aug 9
+  { center:"Grand Hyatt Singapore", stops:["Grand Hyatt Singapore","Singapore Changi Airport, Singapore"] } // Aug 10
+];
+
+function escapeXml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function doodleMapSVG(stops){
+  if (!stops || !stops.length) return '';
+  const labels = stops.map(s => s.split(',')[0]);
+  const n = labels.length;
+  const W = 320, H = 130, mX = 42, midY = 62;
+  const stepX = n > 1 ? (W - mX*2) / (n-1) : 0;
+  let path = '';
+  let nodes = '';
+  labels.forEach((label,i)=>{
+    const x = mX + stepX*i;
+    const y = midY + (i % 2 === 0 ? -16 : 16);
+    if (i === 0) path += `M ${x} ${y}`;
+    else {
+      const prevX = mX + stepX*(i-1);
+      const cx = (prevX + x) / 2;
+      const cy = midY + (i % 2 === 0 ? 20 : -20);
+      path += ` Q ${cx} ${cy} ${x} ${y}`;
+    }
+    const rot = i % 2 === 0 ? -5 : 5;
+    const short = label.length > 9 ? label.slice(0,8) + '…' : label;
+    nodes += `
+      <g transform="rotate(${rot} ${x} ${y})">
+        <circle cx="${x}" cy="${y}" r="15" fill="var(--paper)" stroke="var(--coral)" stroke-width="2.5" stroke-dasharray="2.5 3.5"/>
+        <text x="${x}" y="${y+5}" text-anchor="middle" font-family="Fredoka, sans-serif" font-size="13" font-weight="600" fill="var(--teal-deep)">${i+1}</text>
+      </g>
+      <text x="${x}" y="${y + (i % 2 === 0 ? -26 : 34)}" text-anchor="middle" font-family="Fredoka, 'Noto Sans SC', sans-serif" font-size="10.5" fill="var(--ink-soft)">${escapeXml(short)}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" class="doodle-map-svg" xmlns="http://www.w3.org/2000/svg">
+    <path d="${path}" fill="none" stroke="var(--gold)" stroke-width="3" stroke-dasharray="7 7" stroke-linecap="round"/>
+    ${nodes}
+  </svg>`;
+}
+function mapEmbedUrl(query){
+  return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+}
+function amapSearchUrl(query){
+  return `https://uri.amap.com/search?keyword=${encodeURIComponent(query)}`;
+}
+function mapsDirUrl(stops){
+  if (stops.length === 1) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(stops[0])}`;
+  const origin = stops[0], destination = stops[stops.length-1], mid = stops.slice(1,-1);
+  let url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}`;
+  if (mid.length) url += `&waypoints=${encodeURIComponent(mid.join('|'))}`;
+  return url;
+}
+
+/* ===================== I18N CONTENT ===================== */
+const t = {
+  en: {
+    eyebrow: "JUL 31 — AUG 10, 2026 · SINGAPORE",
+    h1: 'The Ye Family <em>Singapore</em> Voyage',
+    heroSub: "Two flights, five travelers, one reunion. Harbin and Shanghai converge in Singapore for eleven days of gardens, wildlife, a Disney Cruise, and a lot of hawker food.",
+    harbinLabel: "Harbin · Eileen & Mom",
+    harbinTime: "lands 9:55 PM",
+    shanghaiLabel: "Shanghai · Dad, Grandma & Grandpa",
+    shanghaiTime: "lands 4:00 PM",
+    routeCaption1: "Jul 31 · Both parties arrive same day",
+    routeCaption2: "<b>11</b> days together",
+    party: [
+      {dot:"FM", cls:"gold", name:"Fangming"},
+      {dot:"妻", cls:"gold", name:"Wife"},
+      {dot:"EI", cls:"gold", name:"Eileen"},
+      {dot:"爷", cls:"coral", name:"Grandpa"},
+      {dot:"奶", cls:"coral", name:"Grandma"}
+    ],
+    stayLabel: "Stay",
+    sailLabel: "Sail",
+    cruiseTitle: "Disney Cruise",
+    andazDates: "Jul 31–Aug 3",
+    cruiseDates: "Aug 3–6",
+    hyattDates: "Aug 6–10",
+    itineraryTitle: "Day by day",
+    openMap: "Google Maps",
+    openAmap: "Amap (高德, works in China)",
+    guideTitle: "Food & attractions at a glance",
+    tabFood: "Food",
+    tabAttractions: "Attractions",
+    tabBackup: "Backup ideas",
+    food: [
+      {day:"Day 1", name:"Marina Bay waterfront restaurant", note:"Dinner with a view of the bay."},
+      {day:"Day 1", name:"Satay by the Bay", note:"Open-air hawker cluster, great satay right by the water."},
+      {day:"Day 1", name:"Founder Bak Kut Teh", note:"Bugis outlet — 40+ years, one of Singapore's best-known bak kut teh spots."},
+      {day:"Day 1", name:"Chao Niu Hotpot", note:"Duo Galleria, Bugis — Chaoshan-style beef hotpot, a good backup if bak kut teh doesn't appeal."},
+      {day:"Day 2", name:"Ah Meng Restaurant", note:"Inside Singapore Zoo — easy lunch stop between exhibits."},
+      {day:"Day 2", name:"Mandai Wildlife Reserve dining", note:"Dinner right by River Wonders, before Night Safari."},
+      {day:"Day 6", name:"Meta office (Marina One)", note:"Café 30 cafeteria, hosted lunch after disembarking."},
+      {day:"Day 7", name:"VivoCity", note:"Food options right by the Sentosa Express station."},
+      {day:"Day 7", name:"Trapizza", note:"Beachfront pizza on Sentosa, right by Siloso Beach."},
+      {day:"Day 9", name:"Arab Street", note:"Middle Eastern / Turkish eats in Kampong Glam."},
+      {day:"Day 9", name:"National Kitchen by Violet Oon", note:"Peranakan / Baba Nyonya cuisine, inside National Gallery Singapore."},
+      {day:"Day 9", name:"Clarke Quay", note:"One of Singapore's most iconic riverside dining strips."},
+      {day:"Day 9", name:"Song Fa Bak Kut Teh", note:"Flagship on New Bridge Road, a short walk from Clarke Quay."},
+      {day:"Day 8", name:"Container snack stall", note:"Ice cream and snacks on Lazarus / St John's Island — food is otherwise limited out there, bring your own."},
+      {day:"Day 10", name:"Song Fa Bak Kut Teh", note:"Outlet at Jewel Changi Airport — an easy last meal before flying out."}
+    ],
+    attractions: [
+      {day:"Day 1", name:"Gardens by the Bay", note:"Cloud Forest & Flower Dome, air-conditioned and an easy pace for everyone."},
+      {day:"Day 1", name:"Marina Bay Sands", note:"SkyPark view + the free Spectra light & water show at night."},
+      {day:"Day 1", name:"Merlion Park", note:"Singapore's iconic lion-fish statue, right along the Marina Bay waterfront."},
+      {day:"Day 1", name:"Duck Tour", note:"Amphibious bus/boat tour around Marina Bay, departs from Suntec City."},
+      {day:"Day 2", name:"River Wonders, Singapore Zoo & Night Safari", note:"All in Mandai — a full day without backtracking."},
+      {day:"Day 6", name:"Fort Canning Park", note:"Well-known historic hilltop park, close to Orchard."},
+      {day:"Day 6", name:"National Museum of Singapore", note:"Right at the foot of Fort Canning — indoor, air-conditioned option."},
+      {day:"Day 7", name:"Skyline Luge Sentosa (山脊小车)", note:"Hillside luge cart ride + Skyride chairlift near Beach Station."},
+      {day:"Day 7", name:"Disney x Sentosa \"Magical Island Adventure\"", note:"Island-wide Disney Cruise Line installations, through Sept 20, 2026."},
+      {day:"Day 9", name:"Sultan Mosque & Haji Lane", note:"Kampong Glam's golden-domed mosque and colorful shophouse street."},
+      {day:"Day 9", name:"National Gallery Singapore", note:"Former Supreme Court & City Hall, one of the city's best-known landmarks."},
+      {day:"Day 9", name:"Clarke Quay", note:"Iconic riverside strip, optional Singapore River Cruise."},
+      {day:"Day 8", name:"Sisters', Lazarus, St John's & Kusu Islands", note:"Ferry from Marina South Pier — no passport needed, unlike Johor Bahru or Bintan."}
+    ],
+    backup: [
+      {tag:"Optional", name:"St Andrew's Cathedral", note:"Neo-Gothic Anglican cathedral right by National Gallery — easy to fold into the Day 9 walk if there's time."},
+      {tag:"Optional", name:"Old Hill Street Police Station", note:"The colorful shuttered facade is one of Singapore's most photographed buildings, close to Fort Canning / National Gallery."},
+      {tag:"Optional", name:"East Coast Park cycling", note:"Rent bikes along the East Coast — a different side of the island, popular with locals. Would need its own half-day since it's a fair way from the current route; not currently scheduled."},
+      {tag:"Optional", name:"Bird Paradise & Night Safari (Mandai)", note:"Swapped out for the Southern Islands trip on Day 8 — still a solid alternative if the group wants another wildlife day instead. Note Aug 9's National Day fireworks are on the opposite side of the island from Mandai."},
+      {tag:"Optional", name:"Johor Bahru, Malaysia", note:"~1–1.5hr via the causeway (KTM train is far more reliable than bus/car on weekends). China–Malaysia visa exemption is now permanent (up to 30 days), just complete the MDAC entry card 3 days ahead. Legoland Malaysia is a good match for Eileen but a long day for the grandparents."},
+      {tag:"Optional", name:"Bintan, Indonesia", note:"~45min–1hr ferry from HarbourFront. More relaxing resort/beach pace, better for the grandparents, less exciting for Eileen than Legoland."}
+    ],
+    staysTitle: "Where you're staying",
+    packingTitle: "Packing checklist",
+    tipsTitle: "Travel notes",
+    footer: "叶家 · SIN · JUL 31 — AUG 10, 2026",
+    info: [
+      {id:"andaz", k:"Jul 31 – Aug 3 · 3 nights", title:"Andaz Singapore",
+        p:["Duxton Hill — walkable to Chinatown & hawker centres.",
+           "Check-in Jul 31 (Shanghai trio 4pm, Harbin duo late that night) · Check-out Aug 3 before cruise transfer."]},
+      {id:"cruise", k:"Aug 3 – Aug 6 · 3 nights", title:"Disney Cruise",
+        p:["Departs Marina Bay Cruise Centre Singapore.",
+           "Onboard dining & activities included — pack swimwear and a light jacket for AC."]},
+      {id:"hyatt", k:"Aug 6 – Aug 10 · 4 nights", title:"Grand Hyatt Singapore",
+        p:["Orchard Road — breakfast covered daily via Globalist status.",
+           "Check-in Aug 6 post-disembark · Check-out Aug 10, staggered departures."]}
+    ],
+    packing: ["Passports + copies","Flight & cruise confirmations","Diapers / pull-ups for Eileen",
+      "Swimwear (cruise + hotel pools)","Light rain umbrella (x5)",
+      "Sunscreen & hats","Comfortable walking shoes","Medications (incl. grandparents')",
+      "Portable charger / adapters","Light jacket for cruise AC","Snacks for transit days"],
+    tips: [
+      {k:"Weather", p:"Singapore in early August is hot and humid (31–33°C), and Singapore's met service (NEA) forecasts 2026's Jun–Aug Southwest Monsoon to run drier and warmer than usual — still expect brief afternoon showers on some days. The per-day weather shown on each card is a seasonal estimate, not a precise forecast (too far out for that); check NEA's site closer to departure for the real forecast. Keep a compact umbrella in every bag rather than a raincoat."},
+      {k:"Pace for grandparents", p:"Mornings are the busiest blocks; afternoons on land days are kept light or optional so grandma and grandpa can rest at the hotel if they'd rather skip an activity."},
+      {k:"Eileen, age 6+", p:"No stroller needed anymore — she can comfortably walk full days. Gardens by the Bay, the Zoo, River Wonders, and Sentosa all have shaded rest spots if she needs a breather."},
+      {k:"Getting around", p:"Grab (ride-hailing) is the easiest option for a group of five with luggage; the MRT is fast but can get crowded for a group during peak hours."},
+      {k:"Must-try dishes", p:"Look out for chili crab, Hainanese chicken rice, bak kut teh, laksa, char kway teow, and pandan cake at the hawker stops along the way — no need to seek out a specific restaurant, most hawker centres on this trip will have them."},
+      {k:"Viewing this site from mainland China", p:"Each day's Google Maps link won't load without a VPN before you leave — use the Amap (高德) button instead for pre-trip planning. Once you're on the ground in Singapore, Google Maps works normally on local wifi or SIM."}
+    ],
+    slotLabels: ["Morning","Lunch","Afternoon","Dinner","Evening","All day"],
+    days: [
+      {date:"31", mo:"Jul", tag:"andaz", tagLabel:"Andaz", title:"Arrival day", highlight:"Shanghai lands 4pm · Harbin lands 9:55pm",
+        note:"Two arrival windows today — build the evening around the later landing.",
+        slots:[["Morning","Final packing at home before departure."],
+          ["Lunch","In transit / airport."],
+          ["Afternoon","<b>Shanghai trio lands 4:00 PM</b> — transfer to Andaz Singapore, check in, unpack, rest."],
+          ["Dinner","Bugis for dinner — Founder Bak Kut Teh (发传人肉骨茶) has an outlet here, or Chao Niu Hotpot (潮牛火锅) at Duo Galleria for Chaoshan-style beef hotpot as a backup option. Otherwise, plenty of easy hawker choices around Bugis Street."],
+          ["Evening","<b>Harbin duo lands 9:55 PM</b> — transfer to hotel, quiet check-in, everyone rests."]]},
+      {date:"1", mo:"Aug", tag:"andaz", tagLabel:"Andaz", title:"Gardens & Marina Bay", highlight:"Cloud Forest, Flower Dome, and NDP fireworks tonight",
+        note:"Aug 1 is an NDP Preview night (Singapore's National Day is Aug 9) — fireworks over the Kallang Basin from about 7:30pm, not Marina Bay this year. It's a ~15–20 min ride from Marina Bay, so treat it as a bonus if timing works out, not a must.",
+        slots:[["Morning","Gardens by the Bay — Cloud Forest and Flower Dome (air-conditioned, easy pace)."],
+          ["Lunch","Satay by the Bay, open-air hawker with harbor views."],
+          ["Afternoon","Merlion Park — Singapore's most-photographed landmark, a short walk along the bay from Marina Bay Sands. A Duck Tour (amphibious bus/boat around Marina Bay, departs from Suntec City) is a fun add here if the family wants something different. Otherwise, hotel pool / rest for those who'd rather sit down."],
+          ["Dinner","Marina Bay waterfront restaurant."],
+          ["Evening","Spectra Light & Water Show at Marina Bay Sands — or head to the Kallang Basin / Stadium Riverside Walk instead to catch the NDP Preview 2 fireworks (~7:30–8:30pm) if the family's up for the extra trip."]]},
+      {date:"2", mo:"Aug", tag:"andaz", tagLabel:"Andaz", title:"Wildlife day", highlight:"River Wonders & Singapore Zoo, all day in Mandai",
+        slots:[["Morning","River Wonders, then Singapore Zoo — both great for Eileen, easy shaded paths throughout."],
+          ["Lunch","Ah Meng Restaurant, inside the Zoo."],
+          ["Afternoon","Continue exploring the Zoo — staying in the Mandai area all day rather than heading back into town."],
+          ["Dinner","Dinner at one of the Mandai Wildlife Reserve restaurants (e.g. by River Wonders) — no need to backtrack to Andaz."],
+          ["Evening","Night Safari — right there in Mandai, an easy follow-on from dinner."]]},
+      {date:"3", mo:"Aug", tag:"andaz", tagLabel:"Andaz → Cruise", title:"Transfer to the ship", highlight:"Straight to the cruise terminal, board by noon",
+        note:"No Changi stop this time — heading straight to Marina Bay Cruise Centre, with boarding at 12:00pm.",
+        slots:[["Morning","Final packing and check out of Andaz. Leave the hotel with enough buffer to reach Marina Bay Cruise Centre and clear terminal check-in before noon."],
+          ["Lunch","Boarding around 12:00pm — first meal is onboard."],
+          ["Afternoon","Onboard, settle into cabins, explore the ship as it prepares to depart."],
+          ["Dinner","Onboard, as the ship departs."],
+          ["Evening","Onboard entertainment, first night at sea."]]},
+      {date:"4", mo:"Aug", tag:"cruise", tagLabel:"Disney Cruise", title:"At sea — Day 2", highlight:"Palo brunch, Bibbidi Bobbidi Boutique, Royal Tea",
+        note:"Booked reservations for today — everything else onboard (pools, shows, character experiences) is open and unscheduled.",
+        slots:[["10:30am","Palo Trattoria Brunch (Dine, 1h30min) — Hong Fang & Qing Ye."],
+          ["12:30pm","Bibbidi Bobbidi Boutique makeover appointment (45min) — Eileen."],
+          ["1:30pm","Royal Society for Friendship and Tea, Hollywood Spotlight Club (1h30min) — Liyuan Ding & Eileen."],
+          ["Rest of day","Open — onboard programming, pools, shows."]]},
+      {date:"5", mo:"Aug", tag:"cruise", tagLabel:"Disney Cruise", title:"At sea — Day 3", highlight:"Palo brunch booked",
+        note:"One booked reservation today — the rest of the day is open onboard time.",
+        slots:[["10:30am","Palo Trattoria Brunch (Dine, 1h30min) — Fangming & Liyuan Ding."],
+          ["Rest of day","Open — onboard programming, pools, shows, and character experiences for Eileen."]]},
+      {date:"6", mo:"Aug", tag:"hyatt", tagLabel:"Grand Hyatt", title:"Disembark", highlight:"Back to Singapore, lunch at Meta, Fort Canning Park",
+        note:"Fort Canning Park is a well-known historic hilltop park about a 10–15 min walk from Somerset/Dhoby Ghaut. Since Fangming works at Meta, lunch is hosted at the Marina One office cafeteria instead of a food court — arrange guest badges ahead of time.",
+        slots:[["Morning","Disembark the ship, drop luggage at Grand Hyatt Singapore (early check-in or bag storage), then head to Marina One."],
+          ["Lunch","Meta Singapore office (Marina One) — Café 30 cafeteria, hosted by Fangming with guest badges."],
+          ["Afternoon","Fort Canning Park — a well-known, easy, shaded hilltop park on the way back toward Orchard. The National Museum of Singapore at its base is an easy add if anyone wants AC and history indoors instead."],
+          ["Dinner","Dinner along Orchard Road."],
+          ["Evening","Easy stroll through ION Orchard."]]},
+      {date:"7", mo:"Aug", tag:"hyatt", tagLabel:"Grand Hyatt", title:"Sentosa", highlight:"VivoCity, Skyline Luge & the Disney x Sentosa summer takeover",
+        note:"Sentosa is running \"A Magical Island Adventure\" with Disney Cruise Line through Sept 20, 2026 — island-wide installations, so this day leans into that instead of Universal Studios. Getting there: VivoCity → Sentosa via the Sentosa Express monorail (~4 min, from Level 3 of VivoCity, about $4/person) is the easiest option with the group; the free Boardwalk walk takes ~15 min if anyone wants to stretch their legs instead. Once on the island, the Beach Tram and Bus A/B/C are free and cover everywhere; Grab/taxi also works if you want to go straight to one spot.",
+        slots:[["Morning","Breakfast at Grand Hyatt, then head to <b>VivoCity</b> for an early lunch / snack before crossing over — lots of options on Level 2 and 3, right by the Sentosa Express station."],
+          ["Lunch","VivoCity, then take the Sentosa Express (~4 min) across to Beach Station."],
+          ["Afternoon","<b>Skyline Luge</b> — the hillside go-kart ride (山脊小车) near Beach/Imbiah Station: ride down on the luge cart, then back up on the Skyride chairlift for the view. Then explore the <b>Disney x Sentosa \"Magical Island Adventure\"</b> installations — Sensoryscape's Disney-themed garden, Palawan Beach's giant Baymax and Toy Story displays. If anyone wants a quieter change of pace, the Imbiah Nature Trail (a flat-ish 2.3km loop from Imbiah Station, ~30–40 min) is an easy optional detour, though the path is dirt/uneven in parts — better for whoever's up for it while others rest at the beach."],
+          ["Dinner","Trapizza, beachfront on Sentosa."],
+          ["Evening","<b>Southernmost Point of Continental Asia</b> night experience (open till 10pm for the event) — glowing manta rays and installations inspired by Finding Nemo, The Little Mermaid, Lilo & Stitch and Moana. Wings of Time is a nearby alternative if timing's tight."]]},
+      {date:"8", mo:"Aug", tag:"hyatt", tagLabel:"Grand Hyatt", title:"Southern Islands", highlight:"Sisters', Lazarus, St John's & Kusu — no border crossing",
+        note:"All within Singapore — no passport needed, unlike Johor Bahru or Bintan. Ferries leave roughly hourly from Marina South Pier (MRT Thomson-East Coast Line, Exit B, ~2min walk); schedules can shift, so confirm times closer to the day. Food and water are limited on the islands, so bring both, plus mosquito repellent. If energy is limited, it's easy to skip the Lazarus/St John's cycling leg and just do Sisters' + Kusu.",
+        slots:[["Morning","Ferry from Marina South Pier to Sisters' Islands (tickets at the counter, roughly $15–18/person). Explore the mini island — a free telescope at the hilltop viewpoint, and a floating pontoon where you might spot clownfish and schools of fish."],
+          ["Lunch","Food options are limited on the islands — bring snacks and water, or grab something before heading out from Marina South Pier."],
+          ["Afternoon","Ferry onward to Lazarus Island & St John's Island (connected by a path) — rent bikes (~$10/hr) and cycle the loop in about an hour, passing beaches, boats, a hidden NUS marine station with baby anemones, a container snack stall with ice cream, and glass beach houses."],
+          ["Evening","Ferry to Kusu Island — a Chinese temple and the Malay Dato' Keramat shrine, feeding the giant (shy) turtle in the tortoise pond, and a short hike up to the shrine (watch your step — spiders and snakes have been spotted). Ferry back to Marina South Pier."]]},
+      {date:"9", mo:"Aug", tag:"hyatt", tagLabel:"Grand Hyatt", title:"Kampong Glam & Clarke Quay", highlight:"Sultan Mosque, National Gallery, National Day fireworks tonight",
+        note:"Aug 9 is Singapore's actual National Day — fireworks over the Kallang Basin from about 7:30pm, free to watch from Stadium Riverside Walk, Tanjong Rhu Promenade, or Kallang Riverside Park. Clarke Quay is roughly a 15–20 min ride from there, so it's easy to swap tonight's river cruise for the fireworks if the family's up for it.",
+        slots:[["Morning","Kampong Glam — the golden-domed Sultan Mosque, then a wander down colorful Haji Lane."],
+          ["Lunch","Middle Eastern / Turkish spot along Arab Street, right in Kampong Glam — or save room and have Baba Nyonya (Peranakan) food at National Kitchen by Violet Oon inside National Gallery this afternoon instead."],
+          ["Afternoon","National Gallery Singapore — housed in the former Supreme Court and City Hall, one of the city's best-known landmarks and fully air-conditioned."],
+          ["Dinner","Clarke Quay, riverside — one of Singapore's most iconic dining strips. Song Fa Bak Kut Teh (松发肉骨茶) has its flagship a short walk away on New Bridge Road if you'd rather have that instead."],
+          ["Evening","Riverside stroll at Clarke Quay, or an easy Singapore River Cruise boat ride — or head to the Kallang Basin for National Day fireworks (~7:30pm onwards) instead."]]},
+      {date:"10", mo:"Aug", tag:"hyatt", tagLabel:"Grand Hyatt", title:"Departure day", highlight:"Four leave 1:45pm · Grandpa leaves 5:30pm",
+        note:"Staggered departures — plan a lighter afternoon so grandpa isn't waiting around alone for too long.",
+        slots:[["Morning","Breakfast (Globalist), final packing."],
+          ["Lunch","Early lunch near the hotel, before the first departure — or if there's time at the airport, Song Fa Bak Kut Teh (松发肉骨茶) has an outlet at Jewel Changi."],
+          ["Afternoon","<b>Mom, Dad, Eileen & Grandma depart 1:45 PM</b> — head to the airport together."],
+          ["Evening","<b>Grandpa departs 5:30 PM</b> — rests at the hotel lounge in the meantime, then heads to the airport solo."]]}
+    ]
+  },
+  zh: {
+    eyebrow: "2026年7月31日 – 8月10日 · 新加坡",
+    h1: '叶家<em>新加坡</em>之旅',
+    heroSub: "两趟航班，五位亲人，一次团聚。哈尔滨和上海两批人在新加坡会合，共度十一天——花园、动物、迪士尼邮轮，还有数不完的小贩美食。",
+    harbinLabel: "哈尔滨 · 妈妈和婷汀(Eileen)",
+    harbinTime: "晚上9:55降落",
+    shanghaiLabel: "上海 · 爸爸、奶奶和爷爷",
+    shanghaiTime: "下午4:00降落",
+    routeCaption1: "7月31日 · 两批人同一天抵达",
+    routeCaption2: "共 <b>11</b> 天团聚",
+    party: [
+      {dot:"FM", cls:"gold", name:"Fangming"},
+      {dot:"妻", cls:"gold", name:"妻子"},
+      {dot:"EI", cls:"gold", name:"婷汀"},
+      {dot:"爷", cls:"coral", name:"爷爷"},
+      {dot:"奶", cls:"coral", name:"奶奶"}
+    ],
+    stayLabel: "住宿",
+    sailLabel: "航行",
+    cruiseTitle: "迪士尼邮轮",
+    andazDates: "7月31日–8月3日",
+    cruiseDates: "8月3日–6日",
+    hyattDates: "8月6日–10日",
+    itineraryTitle: "每日行程",
+    openMap: "Google地图",
+    openAmap: "高德地图（国内可用）",
+    guideTitle: "美食与景点一览",
+    tabFood: "美食",
+    tabAttractions: "景点",
+    tabBackup: "备选",
+    food: [
+      {day:"第1天", name:"滨海湾沿岸餐厅", note:"晚餐可以看到海湾夜景。"},
+      {day:"第1天", name:"滨海湾沙爹（Satay by the Bay）", note:"露天小贩中心，紧邻海湾，沙爹很出名。"},
+      {day:"第1天", name:"发传人肉骨茶", note:"Bugis分店——40多年老字号，新加坡知名肉骨茶之一。"},
+      {day:"第1天", name:"潮牛火锅", note:"Bugis Duo Galleria——潮汕牛肉火锅，不想吃肉骨茶的话可以当备选。"},
+      {day:"第2天", name:"Ah Meng Restaurant", note:"就在新加坡动物园内，逛累了方便吃午餐。"},
+      {day:"第2天", name:"万礼野生动物保护区餐饮", note:"河川生态园附近吃晚饭，之后直接去夜间野生动物园。"},
+      {day:"第6天", name:"Meta办公室（Marina One）", note:"下船后在Café 30食堂吃午餐。"},
+      {day:"第7天", name:"VivoCity", note:"就在圣淘沙轻轨站旁边，选择很多。"},
+      {day:"第7天", name:"Trapizza", note:"圣淘沙海滩边披萨，就在西乐索海滩旁。"},
+      {day:"第9天", name:"阿拉伯街（Arab Street）", note:"甘榜格南的中东/土耳其美食。"},
+      {day:"第9天", name:"Violet Oon National Kitchen", note:"峇峇娘惹菜，就在新加坡国家美术馆内。"},
+      {day:"第9天", name:"克拉码头（Clarke Quay）", note:"新加坡最知名的河畔餐饮聚集地之一。"},
+      {day:"第9天", name:"松发肉骨茶", note:"新桥路旗舰店，离克拉码头不远。"},
+      {day:"第8天", name:"集装箱小卖部", note:"Lazarus/St John's岛上的冰淇淋和零食——岛上吃的本来就有限，最好自己带点。"},
+      {day:"第10天", name:"松发肉骨茶", note:"星耀樟宜机场分店——飞走前方便吃最后一顿。"}
+    ],
+    attractions: [
+      {day:"第1天", name:"滨海湾花园", note:"云雾林和花穹，有空调，节奏轻松适合全家。"},
+      {day:"第1天", name:"滨海湾金沙", note:"空中花园景观，晚上还有免费的幻彩生辉灯光水舞秀。"},
+      {day:"第1天", name:"鱼尾狮公园", note:"新加坡地标性的狮头鱼身雕像，就在滨海湾岸边。"},
+      {day:"第1天", name:"鸭子船 Duck Tour", note:"水陆两用观光车，环游滨海湾，从Suntec City出发。"},
+      {day:"第2天", name:"河川生态园、新加坡动物园与夜间野生动物园", note:"都在万礼，一天逛完不用来回折腾。"},
+      {day:"第6天", name:"福康宁公园（Fort Canning Park）", note:"知名历史山丘公园，离乌节路不远。"},
+      {day:"第6天", name:"新加坡国家博物馆", note:"就在福康宁公园山脚下，室内有空调。"},
+      {day:"第7天", name:"山脊小车 Skyline Luge", note:"海滩站附近的斜坡滑车，加空中吊椅（Skyride）来回。"},
+      {day:"第7天", name:"圣淘沙x迪士尼\"奇幻岛屿大冒险\"", note:"全岛迪士尼邮轮主题装置，展至2026年9月20日。"},
+      {day:"第9天", name:"苏丹清真寺与哈芝巷", note:"甘榜格南金顶清真寺和彩色老街。"},
+      {day:"第9天", name:"新加坡国家美术馆", note:"旧最高法院和市政厅改建，新加坡知名地标之一。"},
+      {day:"第9天", name:"克拉码头", note:"知名河畔景点，可选新加坡河游船。"},
+      {day:"第8天", name:"姐妹岛、Lazarus、St John's与龟屿岛", note:"从Marina South Pier坐船——不像去新山或民丹岛，不需要护照。"}
+    ],
+    backup: [
+      {tag:"备选", name:"圣安德烈教堂", note:"新哥特式圣公会座堂，就在国家美术馆旁边——如果第9天时间宽裕，顺路加进去很方便。"},
+      {tag:"备选", name:"旧禧街警察局", note:"彩色百叶窗外墙是新加坡拍照率很高的建筑之一，离福康宁公园/国家美术馆不远。"},
+      {tag:"备选", name:"东海岸公园骑行", note:"在东海岸租自行车骑行，是本地人很喜欢的活动，跟目前路线不在一个方向，需要单独安排半天，目前行程里还没排进去。"},
+      {tag:"备选", name:"飞禽公园与夜间野生动物园（万礼）", note:"第8天换成了南部离岛，这个还是个不错的备选，想再来一天动物园主题也可以用这个。要注意8月9日国庆正日的烟花在岛的另一头（加冷盆地），跟万礼离得比较远。"},
+      {tag:"备选", name:"马来西亚新山", note:"过causeway大约1-1.5小时（周末建议坐KTM火车，比大巴/自驾靠谱得多）。中马现在已经永久互免签证（最长30天），出发前3天填好MDAC入境卡就行。乐高乐园很适合婷汀，但对爷爷奶奶来说是很累的一整天。"},
+      {tag:"备选", name:"印尼民丹岛", note:"从怡丰城坐渡轮大约45分钟-1小时。度假村+沙滩，节奏更轻松，比较照顾爷爷奶奶，但对婷汀来说没有乐高乐园刺激。"}
+    ],
+    staysTitle: "住宿安排",
+    packingTitle: "行李清单",
+    tipsTitle: "旅行须知",
+    footer: "叶家 · 新加坡 · 2026年7月31日 – 8月10日",
+    info: [
+      {id:"andaz", k:"7月31日 – 8月3日 · 3晚", title:"新加坡Andaz酒店",
+        p:["位于Duxton Hill——步行可达牛车水和小贩中心。",
+           "7月31日入住（上海三人下午4点到，哈尔滨两人当晚较晚到）· 8月3日退房，转乘邮轮。"]},
+      {id:"cruise", k:"8月3日 – 6日 · 3晚", title:"迪士尼邮轮",
+        p:["从新加坡滨海湾邮轮中心出发。",
+           "船上餐饮及活动均已包含——记得带泳衣和薄外套（船上空调较冷）。"]},
+      {id:"hyatt", k:"8月6日 – 10日 · 4晚", title:"新加坡君悦酒店",
+        p:["位于乌节路——凭Globalist会籍每日早餐已包含。",
+           "8月6日下船后入住 · 8月10日退房，当天分批离开。"]}
+    ],
+    packing: ["护照及复印件","机票和邮轮确认单","婷汀的纸尿裤/学步裤",
+      "泳衣（邮轮及酒店泳池用）","轻便雨伞（5把）",
+      "防晒霜和帽子","舒适的步行鞋","常用药品（含爷爷奶奶的）",
+      "充电宝/转换插头","邮轮空调薄外套","转机日的零食"],
+    tips: [
+      {k:"天气", p:"新加坡8月初炎热潮湿（31–33°C），新加坡气象局（NEA）预计2026年6-8月西南季风会比往年偏干偏热，但部分日子午后仍可能有短暂阵雨。每天卡片上显示的天气是季节性估算，不是精确预报（现在离出发还有点远，查不到那么准），临出发前建议再上NEA官网确认一下实际预报。建议每个包里都放一把折叠伞，比雨衣更实用。"},
+      {k:"照顾爷爷奶奶的节奏", p:"上午通常安排较满；陆地行程的下午都留得比较轻松或可选，方便爷爷奶奶想休息时留在酒店。"},
+      {k:"婷汀已经6岁多了", p:"不需要婴儿车了，全天步行没问题。滨海湾花园、动物园、河川生态园和圣淘沙都有遮荫休息区，累了可以随时坐下歇一歇。"},
+      {k:"市内交通", p:"五人加行李，Grab打车最方便；地铁虽快，但高峰期人多，带一家人出行会比较拥挤。"},
+      {k:"必吃美食", p:"路上遇到小贩中心时，可以留意辣椒螃蟹、海南鸡饭、肉骨茶、叻沙、炒粿条和斑斓蛋糕——不用特意找某家店，这趟行程经过的小贩中心大多都能吃到。"},
+      {k:"国内查看这个网站", p:"出发前在国内没有VPN的话，每天的Google地图链接打不开——可以用旁边的高德地图按钮代替。等到了新加坡当地，用WiFi或当地SIM卡，Google地图就能正常用了。"}
+    ],
+    slotLabels: ["上午","午餐","下午","晚餐","晚上","全天"],
+    days: [
+      {date:"31", mo:"7月", tag:"andaz", tagLabel:"Andaz", title:"抵达日", highlight:"上海下午4点到 · 哈尔滨晚上9:55到",
+        note:"今天有两个抵达时段——晚上的安排以较晚到达的一批人为准。",
+        slots:[["上午","出发前在家做最后打包。"],
+          ["午餐","转机/机场用餐。"],
+          ["下午","<b>上海三人下午4:00降落</b>——前往新加坡Andaz酒店，办理入住、整理行李、休息。"],
+          ["晚餐","在Bugis吃晚饭——发传人肉骨茶在这里有分店，或者去Duo Galleria的潮牛火锅（潮汕牛肉火锅）作为备选。不想吃这两样的话，Bugis Street一带小贩中心选择也很多。"],
+          ["晚上","<b>哈尔滨两人晚上9:55降落</b>——接至酒店，安静办理入住，大家早点休息。"]]},
+      {date:"1", mo:"8月", tag:"andaz", tagLabel:"Andaz", title:"花园与滨海湾", highlight:"云雾林、花穹、今晚有国庆预演烟花",
+        note:"8月1日是新加坡国庆预演之夜（国庆正日是8月9日）——晚上7点半左右在加冷盆地（Kallang Basin）有烟花，今年不在滨海湾放了。从滨海湾过去大概15-20分钟车程，时间凑得上就当加映场，凑不上也不用勉强。",
+        slots:[["上午","滨海湾花园——云雾林和花穹（有空调，节奏轻松）。"],
+          ["午餐","Satay by the Bay，露天小贩中心，可看海湾景色。"],
+          ["下午","鱼尾狮公园——新加坡拍照率最高的地标，从滨海湾金沙沿海岸走过去不远。想玩点不一样的，可以加个鸭子船（Duck Tour，水陆两用车，从Suntec City出发，环游滨海湾）。想坐下休息的话，也可以回酒店泳池歇一歇。"],
+          ["晚餐","滨海湾沿岸餐厅。"],
+          ["晚上","滨海湾金沙幻彩生辉灯光水舞秀——如果大家愿意多跑一趟，也可以去加冷盆地/体育场滨水步道看国庆预演烟花（约晚上7:30-8:30）。"]]},
+      {date:"2", mo:"8月", tag:"andaz", tagLabel:"Andaz", title:"动物园日", highlight:"河川生态园与新加坡动物园，全天都在万礼",
+        slots:[["上午","先去河川生态园，再去新加坡动物园——很适合婷汀，全程步道也很好走。"],
+          ["午餐","动物园内的Ah Meng Restaurant。"],
+          ["下午","继续逛动物园——全天都留在万礼（Mandai）片区，不用折返市区。"],
+          ["晚餐","就在万礼野生动物保护区附近吃晚饭（比如河川生态园那一带），不用再折返Andaz。"],
+          ["晚上","夜间野生动物园（Night Safari）——就在万礼，吃完饭直接过去很方便。"]]},
+      {date:"3", mo:"8月", tag:"andaz", tagLabel:"Andaz → 邮轮", title:"转乘邮轮日", highlight:"直接前往邮轮码头，中午12点登船",
+        note:"这次不去樟宜机场了——直接前往滨海湾邮轮中心，中午12点登船。",
+        slots:[["上午","在Andaz做最后的打包和退房，预留好前往滨海湾邮轮中心的路程和码头值机时间，确保中午前能登船。"],
+          ["午餐","中午12点左右登船，第一顿饭在船上吃。"],
+          ["下午","登船后安顿房间，趁邮轮准备启航时熟悉一下船上环境。"],
+          ["晚餐","船上用餐，邮轮启航。"],
+          ["晚上","船上娱乐活动，海上的第一晚。"]]},
+      {date:"4", mo:"8月", tag:"cruise", tagLabel:"迪士尼邮轮", title:"海上航行 第2天", highlight:"Palo早午餐、灰姑娘魔法造型、皇家茶会",
+        note:"今天已经预约好的几个项目——船上其他时间（泳池、演出、角色互动）都是自由活动，没有安排。",
+        slots:[["上午10:30","Palo Trattoria Brunch（正餐，1小时30分）——Hong Fang 和 Qing Ye。"],
+          ["中午12:30","Bibbidi Bobbidi Boutique 灰姑娘魔法造型预约（45分钟）——婷汀（Eileen）。"],
+          ["下午1:30","Royal Society for Friendship and Tea 皇家茶会，Hollywood Spotlight Club（1小时30分）——Liyuan Ding 和 婷汀。"],
+          ["其余时间","自由活动——船上项目、泳池、演出。"]]},
+      {date:"5", mo:"8月", tag:"cruise", tagLabel:"迪士尼邮轮", title:"海上航行 第3天", highlight:"已预约Palo早午餐",
+        note:"今天只预约了一项——其余时间都是船上的自由活动。",
+        slots:[["上午10:30","Palo Trattoria Brunch（正餐，1小时30分）——Fangming 和 Liyuan Ding。"],
+          ["其余时间","自由活动——船上项目、泳池、演出，以及给婷汀准备的角色互动体验。"]]},
+      {date:"6", mo:"8月", tag:"hyatt", tagLabel:"君悦", title:"下船", highlight:"返回新加坡，Meta办公室午餐，游福康宁公园",
+        note:"福康宁公园（康宁公园，Fort Canning Park）是新加坡知名的历史山丘公园，离索美塞/多美歌站走路大概10-15分钟。因为Fangming是Meta员工，午餐直接安排在Marina One的Meta办公室食堂，不用去美食广场——记得提前申请好访客证。",
+        slots:[["上午","下船，先把行李送到君悦酒店（提前入住或寄存行李），然后前往Marina One。"],
+          ["午餐","Meta新加坡办公室（Marina One）——Café 30食堂，Fangming带家人一起，访客证提前申请好。"],
+          ["下午","福康宁公园——回乌节路的路上顺路，知名度高，节奏轻松，有遮荫。想吹空调的话，山脚下的新加坡国家博物馆也是个好选择。"],
+          ["晚餐","乌节路沿线晚餐。"],
+          ["晚上","轻松逛逛ION Orchard。"]]},
+      {date:"7", mo:"8月", tag:"hyatt", tagLabel:"君悦", title:"圣淘沙", highlight:"VivoCity、山脊小车（Skyline Luge）与圣淘沙x迪士尼夏日装置",
+        note:"圣淘沙从现在到2026年9月20日都在举办\"奇幻岛屿大冒险\"（A Magical Island Adventure），联合迪士尼邮轮打造全岛装置——所以这天不去环球影城，改成体验这个。怎么去：从VivoCity坐圣淘沙轻轨（Sentosa Express，VivoCity三楼，约4分钟，每人约4新元）最方便，一家人一起走这条最省心；如果想散散步，走圣淘沙栈道（Sentosa Boardwalk）是免费的，大约15分钟。上岛之后，海滩电车（Beach Tram）和岛内巴士A/B/C都是免费的，覆盖各个景点；想直接去某个地方，打Grab或出租车也可以。",
+        slots:[["上午","在君悦吃完早餐后前往<b>VivoCity</b>，先吃点东西垫垫肚子——VivoCity二三楼选择很多，紧挨着圣淘沙轻轨站。"],
+          ["午餐","在VivoCity用餐，然后坐轻轨（约4分钟）过海到圣淘沙海滩站。"],
+          ["下午","<b>山脊小车（Skyline Luge）</b>——在海滩站/英比奥站附近的斜坡滑车，先坐空中吊椅（Skyride）上山，再自己驾驶小车滑下山。接着逛<b>圣淘沙x迪士尼\"奇幻岛屿大冒险\"</b>装置——Sensoryscape的迪士尼主题花园、巴拉湾海滩的巨型大白（Baymax）和玩具总动员造景。如果有人想换个节奏，英比奥自然步道（Imbiah Nature Trail，从英比奥站出发，环形约2.3公里，30-40分钟）是个安静的可选项，不过路面是土路、有些不平，比较适合体力好的人去走，其他人可以留在海滩休息。"],
+          ["晚餐","Trapizza，圣淘沙海滩边。"],
+          ["晚上","<b>新加坡大陆最南端点（Southernmost Point）</b>夜间体验（活动期间延长至晚上10点）——发光的蝠鲼装置，灵感来自海底总动员、小美人鱼、星际宝贝和海洋奇缘。时间赶的话，附近的时光之翼灯光水舞秀是备选。"]]},
+      {date:"8", mo:"8月", tag:"hyatt", tagLabel:"君悦", title:"南部离岛", highlight:"姐妹岛、Lazarus、St John's与龟屿岛——不用过境",
+        note:"这几个岛都还在新加坡境内——不像去新山或民丹岛，不需要护照。从Marina South Pier（地铁汤申—东海岸线，B出口，步行约2分钟）出发，船班大概每小时一趟，具体时刻表出发前建议再确认一次。岛上吃的喝的都有限，记得自己带够水和零食，再喷点防蚊液。体力有限的话，Lazarus/St John's骑车这段可以跳过，只去姐妹岛+龟屿岛也没问题。",
+        slots:[["上午","从Marina South Pier坐船去姐妹岛（Sisters' Islands），窗口现场买票（大概15-18新币/人）。逛一逛这个迷你小岛——山顶有免费望远镜，岛边浮桥有机会看到小丑鱼和成群的鱼。"],
+          ["午餐","岛上吃的选择有限——自己带点零食和水，或者出发前在Marina South Pier先垫一垫。"],
+          ["下午","坐船去Lazarus Island和St John's Island（两岛之间已经修路连通）——租辆自行车（约10新币/小时），一小时左右能绕一圈，沿途有沙滩、游艇，还有隐藏的NUS海洋站（能看到培育中的海葵宝宝）、一个卖冰淇淋的集装箱小卖部，以及几栋玻璃度假屋。"],
+          ["晚上","坐船去龟屿岛（Kusu Island）——一座中式庙宇和马来信仰的拿督公庙，乌龟池里喂那只胆小的大乌龟，再爬一小段山去拿督公庙（注意脚下，有人遇到过蜘蛛和蛇）。然后坐船返回Marina South Pier。"]]},
+      {date:"9", mo:"8月", tag:"hyatt", tagLabel:"君悦", title:"甘榜格南与克拉码头", highlight:"苏丹清真寺、新加坡国家美术馆、今晚国庆正日烟花",
+        note:"8月9日是新加坡真正的国庆日——晚上7点半左右在加冷盆地有烟花，免费观看，可以去体育场滨水步道（Stadium Riverside Walk）、丹戎禺海滨长廊或加冷河滨公园。克拉码头离那边大概15-20分钟车程，如果大家愿意，晚上的游船可以直接换成去看烟花。",
+        slots:[["上午","甘榜格南（Kampong Glam）——金顶的苏丹清真寺，然后逛逛五彩缤纷的哈芝巷（Haji Lane）。"],
+          ["午餐","阿拉伯街（Arab Street）上的中东/土耳其餐厅，就在甘榜格南——或者留点肚子，下午在新加坡国家美术馆内的Violet Oon National Kitchen吃峇峇娘惹菜也不错。"],
+          ["下午","新加坡国家美术馆——由旧最高法院和市政厅改建而成，新加坡最知名的地标之一，全程有空调。"],
+          ["晚餐","克拉码头（Clarke Quay）河畔——新加坡最有名的餐饮聚集地之一。附近新桥路上就是松发肉骨茶的旗舰店，想吃这个也很方便。"],
+          ["晚上","克拉码头河边散步，或者坐一趟轻松的新加坡河游船——也可以直接去加冷盆地看国庆正日烟花（约晚上7:30起）。"]]},
+      {date:"10", mo:"8月", tag:"hyatt", tagLabel:"君悦", title:"离开日", highlight:"四人下午1:45出发 · 爷爷5:30出发",
+        note:"分批离开——下午安排轻松一些，避免爷爷一个人等太久。",
+        slots:[["上午","享用早餐（Globalist），做最后打包。"],
+          ["午餐","第一批出发前，在酒店附近提前用午餐——如果到机场还有时间，星耀樟宜里也有一家松发肉骨茶。"],
+          ["下午","<b>妈妈、爸爸、婷汀和奶奶下午1:45出发</b>——一起前往机场。"],
+          ["晚上","<b>爷爷下午5:30出发</b>——先在酒店休息室等候，再独自前往机场。"]]}
+    ]
+  }
+};
+
+let currentLang = 'zh';
+let currentGuideTab = 'food';
+
+function renderGuide(L){
+  const tabs = document.getElementById('guideTabs');
+  tabs.innerHTML = `
+    <button class="guide-tab-btn ${currentGuideTab==='food' ? 'active':''}" onclick="setGuideTab('food')">${L.tabFood}</button>
+    <button class="guide-tab-btn ${currentGuideTab==='attractions' ? 'active':''}" onclick="setGuideTab('attractions')">${L.tabAttractions}</button>
+    <button class="guide-tab-btn ${currentGuideTab==='backup' ? 'active':''}" onclick="setGuideTab('backup')">${L.tabBackup}</button>
+  `;
+  const items = currentGuideTab === 'food' ? L.food : currentGuideTab === 'attractions' ? L.attractions : L.backup;
+  const grid = document.getElementById('guideGrid');
+  grid.innerHTML = items.map(it => `
+    <div class="guide-card">
+      <span class="g-day">${it.day || it.tag}</span>
+      <div class="g-body"><h4>${it.name}</h4><p>${it.note}</p></div>
+    </div>`).join('');
+}
+
+function setGuideTab(tab){
+  currentGuideTab = tab;
+  renderGuide(t[currentLang]);
+}
+
+function renderAll(){
+  const L = t[currentLang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    el.textContent = L[el.dataset.i18n];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    el.innerHTML = L[el.dataset.i18nHtml];
+  });
+
+  // party chips
+  const partyRow = document.getElementById('partyRow');
+  partyRow.innerHTML = L.party.map(p=>`<div class="chip"><span class="dot ${p.cls}">${p.dot}</span>${p.name}</div>`).join('');
+
+  // food / attractions guide tabs
+  renderGuide(L);
+
+  // info cards
+  const infoGrid = document.getElementById('infoGrid');
+  infoGrid.innerHTML = L.info.map(c=>`
+    <div class="info-card" id="${c.id}">
+      <div class="k">${c.k}</div>
+      <h3>${c.title}</h3>
+      ${c.p.map(pp=>`<p>${pp}</p>`).join('')}
+    </div>`).join('');
+
+  // checklist — preserve checked state across language switch
+  const checklist = document.getElementById('checklist');
+  const prevChecked = Array.from(checklist.querySelectorAll('input')).map(i=>i.checked);
+  checklist.innerHTML = L.packing.map((item,i)=>`
+    <label class="check-item${prevChecked[i] ? ' checked':''}">
+      <input type="checkbox" ${prevChecked[i] ? 'checked':''} onchange="this.parentElement.classList.toggle('checked', this.checked)">
+      <span>${item}</span>
+    </label>`).join('');
+
+  // tips
+  const tipsGrid = document.getElementById('tipsGrid');
+  tipsGrid.innerHTML = L.tips.map(tp=>`
+    <div class="tip"><div class="k">${tp.k}</div><p>${tp.p}</p></div>`).join('');
+
+  // day cards — preserve open state
+  const dayList = document.getElementById('dayList');
+  const prevOpen = Array.from(dayList.querySelectorAll('.day-card')).map(c=>c.classList.contains('open'));
+  dayList.innerHTML = '';
+  L.days.forEach((d,i)=>{
+    const card = document.createElement('div');
+    card.className = 'day-card' + ((prevOpen[i] || (prevOpen.length===0 && i===0)) ? ' open' : '');
+    const dm = dayStops[i];
+    const dow = currentLang === 'zh' ? weekdaysZH[i] : weekdaysEN[i];
+    const weather = currentLang === 'zh' ? weatherZH : weatherEN;
+    card.innerHTML = `
+      <div class="day-summary" onclick="this.parentElement.classList.toggle('open')">
+        <div class="day-date"><div class="num">${d.date}</div><div class="mo">${d.mo}</div><div class="dow">${dow}</div></div>
+        <div class="day-main">
+          <span class="day-tag tag-${d.tag}">${d.tagLabel}</span><span class="weather-badge">☀️ ${weather}</span>
+          <div class="day-title">${d.title}</div>
+          <div class="day-highlight">${d.highlight}</div>
+        </div>
+        <div class="day-toggle">+</div>
+      </div>
+      <div class="day-detail">
+        ${d.note ? `<div class="note-banner">${d.note}</div>` : ''}
+        ${dm ? `<div class="day-map">
+          ${doodleMapSVG(dm.stops)}
+          <div class="day-map-links">
+            <a class="day-map-link" href="${mapsDirUrl(dm.stops)}" target="_blank" rel="noopener">🗺️ ${L.openMap}</a>
+            <a class="day-map-link" href="${amapSearchUrl(dm.center)}" target="_blank" rel="noopener">📍 ${L.openAmap}</a>
+          </div>
+        </div>` : ''}
+        <div class="schedule">
+          ${d.slots.map(s => `
+            <div class="slot">
+              <div class="slot-label">${s[0]}</div>
+              <div class="slot-text">${s[1]}</div>
+            </div>`).join('')}
+        </div>
+      </div>`;
+    dayList.appendChild(card);
+  });
+
+  document.documentElement.lang = currentLang === 'zh' ? 'zh-CN' : 'en';
+  document.getElementById('btnEn').classList.toggle('active', currentLang==='en');
+  document.getElementById('btnZh').classList.toggle('active', currentLang==='zh');
+}
+
+function setLang(lang){
+  currentLang = lang;
+  renderAll();
+}
+
+function scrollToPhase(id){
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+renderAll();
+</script>
+
+</body>
+</html>
